@@ -25,7 +25,7 @@ model Employee {
 
 model Squad {
   id    Int        @id @default(autoincrement())
-  name  String     @unique
+  name  String     
 
   employee Employee[]
 

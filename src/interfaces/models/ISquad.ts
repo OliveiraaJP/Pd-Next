@@ -1,4 +1,4 @@
 export default interface ISquad {
-    id?: string;
+    id?: number;
     name: string;
 }

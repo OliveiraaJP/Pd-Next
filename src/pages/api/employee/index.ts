@@ -1,6 +1,6 @@
-import { squadSchema } from "@/back/schemas/squadSchema";
+import { empoloyeeSchema } from "@/back/schemas/empolyeeSchema";
 import SendRequestError from "@/back/services/app/SendRequestErrorService";
-import CreateSquadService from "@/back/services/squad/CreateSquadService";
+import CreateEmployeeService from "@/back/services/employee/CreateEmployeeService";
 import { schemaValidator } from "@/back/shared/schemaValidator";
 import AppError from "@/errors/AppError";
 import RouteNotFoundError from "@/errors/RouteNotFoundError";
@@ -17,18 +17,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     try {
-        const { name } = req.body
-
-        const validateBody = await schemaValidator(squadSchema, req.body)
+        const { name, estimatedHours, squadId } = req.body
+        const validateBody = await schemaValidator(empoloyeeSchema, req.body)
         if (validateBody.errors) {
             throw new AppError(validateBody.errors, 406)
         }
-        
-        const createSquadService = new CreateSquadService()
-        const newSquad = await createSquadService.execute({ name })
-
-        res.status(201).json({ message: "Squad criado", data: newSquad })
-
+        const employeeService = new CreateEmployeeService()
+        const newEmployee = await employeeService.execute({ name, estimatedHours, squadId })
+        res.status(201).json({ message: "Employee criado", data: newEmployee })
     } catch (error) {
         const sendRequestError = new SendRequestError();
         sendRequestError.execute({ res, error });

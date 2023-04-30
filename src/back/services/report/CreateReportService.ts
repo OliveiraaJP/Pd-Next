@@ -13,7 +13,7 @@ export default class CreateReportService {
         const employeeRepository = new EmployeeRepository()
         const hasEmployee = await employeeRepository.getOne({ id: employeeId });
         if (!hasEmployee) {
-            throw new AppError(`Employee com id:${employeeId} nao existe`, 404);
+            throw new AppError(`Employee com id:${employeeId} não existe`, 404);
         }
         const reportRepository = new ReportRepository();
         const newReport = await reportRepository.create({ description, employeeId, spentHours });

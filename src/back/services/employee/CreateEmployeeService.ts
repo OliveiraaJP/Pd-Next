@@ -14,7 +14,7 @@ export default class CreateEmployeeService {
         const squadRepository = new SquadRepository();
         const hasSquad = await squadRepository.getOne({ id: squadId });
         if (!hasSquad) {
-            throw new AppError(`Squad com id:${squadId} nao existe`, 404);
+            throw new AppError(`Squad com id:${squadId} não existe`, 404);
         }
 
         const employeeRepository = new EmployeeRepository();

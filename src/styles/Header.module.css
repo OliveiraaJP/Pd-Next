@@ -1,0 +1,80 @@
+.main {
+  width: 100vw;
+  min-height: 25vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0em 10em 0em 10em;
+  background-color: var(--gray-1);
+  color: var(--black-1);
+  box-shadow: var(--box-shadow-1)
+}
+
+.box1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.box1 h1 {
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 59.59px;
+}
+
+.box1 nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.box1 nav button.select {
+  background: none;
+  border: none;
+  padding-bottom: 0.2em;
+  border-bottom: 4.3px var(--blue-1) solid;
+  color: var(--black-1);
+  cursor: pointer;
+}
+
+.box1 nav button.notselect {
+  background: none;
+  border: none;
+  padding-bottom: 0.2em;
+  border-bottom: 4.3px var(--gray-1) solid;
+  color: var(--gray-3);
+  cursor: pointer;
+}
+
+.bhoras {
+  border: none;
+  box-shadow: var(--box-shadow-1);
+  width: 182px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-1);
+  color: var(--gray-1);
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.bhoras:hover {
+    background-color: var(--blue-2);
+  }
+
+@media screen and (max-width: 741px) {
+  .main {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .box2 {
+    display: none;
+  }
+}

@@ -3,6 +3,8 @@ import { Roboto } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import Header from "@/front/components/templates/header";
+import Modal from "@/front/components/base/modal";
+import ReportModal from "@/front/components/templates/reportModal";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -11,17 +13,17 @@ const roboto = Roboto({
 });
 
 export default function Home() {
-
   const [selectedTab, setSelectedTab] = useState("squads");
+  const [reportModal, setReportModal] = useState(false);
 
   function handleSelectTab(tab: string) {
     setSelectedTab(tab);
   }
 
   function handleShowReportModal() {
-    console.log("open modal");
+    setReportModal(true);
   }
-  
+
   return (
     <>
       <Head>
@@ -31,14 +33,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${roboto.className}`}>
+        {reportModal && (
+          <Modal
+            onClose={() => setReportModal(false)}
+            modalName="Criar lançamento"
+          >
+            <ReportModal closeModalProps={() => setReportModal(false)} />
+          </Modal>
+        )}
         <Header
           selectedTab={selectedTab}
           onSelectTab={handleSelectTab}
           showReportModal={handleShowReportModal}
         />
-        <div className={styles.homepage}>
-
-        </div>
+        <div className={styles.homepage}></div>
       </main>
     </>
   );

@@ -1,0 +1,9 @@
+.errorMessage{
+    background-color: var(--red-background-error);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.errorMessage p {
+    color: var(--red-1);
+}

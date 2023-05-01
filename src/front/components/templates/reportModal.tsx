@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "@/styles/Modal.module.css";
 import { postReport } from "../requests/reports/postReport";
 import ErrorMessage from "../base/errorMessage";
-import { useRouter } from "next/router";
 
 interface ReportModalProps {
   closeModalProps: any;
@@ -16,8 +15,6 @@ function ReportModal({ closeModalProps }: ReportModalProps) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const isFormFilled = employeeId && spentHours && description;
-
-  const router = useRouter();
 
   async function submitReportForm(e: any) {
     e.preventDefault();

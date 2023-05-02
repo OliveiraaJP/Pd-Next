@@ -8,6 +8,8 @@
   --gray-2: #dde2e5;
   --gray-3: #acb5bd;
   --gray-4: #495057;
+  --red-1: #F03D3E;
+  --red-background-error: rgba(240, 61, 62, .1);
 
   /* other colors */
   --blue-2: #3b55cf;
@@ -19,4 +21,5 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  color: #212429;
 }

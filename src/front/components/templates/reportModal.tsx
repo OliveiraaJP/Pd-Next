@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/styles/Modal.module.css";
-import { postReport } from "../requests/reports/postReport";
+import { postReport } from "../../requests/reports/postReport";
 import ErrorMessage from "../base/errorMessage";
 
 interface ReportModalProps {

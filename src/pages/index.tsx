@@ -5,6 +5,7 @@ import { useState } from "react";
 import Header from "@/front/components/templates/header";
 import Modal from "@/front/components/base/modal";
 import ReportModal from "@/front/components/templates/reportModal";
+import SquadsHomePage from "@/front/components/templates/squadsHomePage";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -46,7 +47,10 @@ export default function Home() {
           onSelectTab={handleSelectTab}
           showReportModal={handleShowReportModal}
         />
-        <div className={styles.homepage}></div>
+        <div className={styles.homepage}>
+          {selectedTab === "squads" && <SquadsHomePage />}
+          {selectedTab === "users" && <div>USERS</div>}
+        </div>
       </main>
     </>
   );

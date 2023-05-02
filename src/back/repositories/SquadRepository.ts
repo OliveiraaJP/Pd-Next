@@ -10,6 +10,10 @@ export default class SquadRepository {
         return await prisma.squad.findFirst({ where: { id } })
     }
 
+    public async getAll() {
+        return await prisma.squad.findMany()
+    }
+
     public async getSquadReports({ id, startDate, endDate }: { id: number, startDate: Date, endDate: Date }) {
         return await prisma.employee.findMany({
             where: { squadId: id },

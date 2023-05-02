@@ -6,6 +6,7 @@ import Header from "@/front/components/templates/header";
 import Modal from "@/front/components/base/modal";
 import ReportModal from "@/front/components/templates/reportModal";
 import SquadsHomePage from "@/front/components/templates/squadsHomePage";
+import EmployeesHomePage from "@/front/components/templates/employeesHomePage";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -49,7 +50,7 @@ export default function Home() {
         />
         <div className={styles.homepage}>
           {selectedTab === "squads" && <SquadsHomePage />}
-          {selectedTab === "users" && <div>USERS</div>}
+          {selectedTab === "users" && <EmployeesHomePage />}
         </div>
       </main>
     </>

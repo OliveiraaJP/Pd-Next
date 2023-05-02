@@ -9,4 +9,8 @@ export default class EmployeeRepository {
     public async getOne({ id }: { id: number }) {
         return await prisma.employee.findFirst({ where: { id } });
     }
+
+    public async getAll() {
+        return await prisma.employee.findMany();
+    }
 }

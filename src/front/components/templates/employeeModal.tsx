@@ -40,33 +40,42 @@ function EmployeeModal({ closeModalProps, reloadingPage }: EmployeeModalProps) {
       <div className={styles.modalChildren}>
         {!errorMessage ? <></> : <ErrorMessage> {errorMessage}</ErrorMessage>}
         <form onSubmit={submitReportForm}>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            placeholder="Digite o nome do funcionário"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            name="estimatedHours"
-            id="estimatedHours"
-            placeholder="Digite as horas estimadas de trabalho"
-            value={estimatedHours}
-            onChange={(e) => setEstimatedHours(Number(e.target.value))}
-            required
-          />
-          <input
-            type="number"
-            name="squadId"
-            id="squadId"
-            placeholder="Digite o Id da squad"
-            value={squadId}
-            onChange={(e) => setSquadId(Number(e.target.value))}
-            required
-          />
+          <div className={styles.box}>
+            <label htmlFor="userName">Nome de usuário</label>
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              placeholder="Digite o nome do funcionário"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.box}>
+          <label htmlFor="userName">Horas estimadas</label>
+            <input
+              type="number"
+              name="estimatedHours"
+              id="estimatedHours"
+              placeholder="Digite as horas estimadas de trabalho"
+              value={estimatedHours}
+              onChange={(e) => setEstimatedHours(Number(e.target.value))}
+              required
+            />
+          </div>
+          <div className={styles.box}>
+          <label htmlFor="userName">Id do squad</label>
+            <input
+              type="number"
+              name="squadId"
+              id="squadId"
+              placeholder="Digite o Id da squad"
+              value={squadId}
+              onChange={(e) => setSquadId(Number(e.target.value))}
+              required
+            />
+          </div>
           <button type="submit" disabled={!isFormFilled || loading}>
             {loading ? "Carregando..." : "Criar usuário"}
           </button>

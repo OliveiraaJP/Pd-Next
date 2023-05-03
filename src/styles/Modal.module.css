@@ -47,13 +47,20 @@
     flex-direction: column;
     gap: 40px;
     justify-content: center;
-    align-items: center;
+   
   }
 
-  .modalChildren input {
+  .modalChildren div.box input {
     width: 100%;
     height: 40px;
     padding: 5px;
+    margin-top: 4px;
+  }
+
+  .modalChildren div.box label {
+    width: 100%;
+    height: 40px;
+    color: var(--gray-3);
   }
 
   .modalChildren form button {

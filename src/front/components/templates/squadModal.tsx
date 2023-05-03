@@ -38,6 +38,8 @@ function SquadModal({ closeModalProps, reloadingPage }: SquadModalProps) {
       <div className={styles.modalChildren}>
         {!errorMessage ? <></> : <ErrorMessage> {errorMessage}</ErrorMessage>}
         <form onSubmit={submitModalForm}>
+          <div className={styles.box}>
+          <label htmlFor="squadName">Nome da squad</label>
           <input
             type="text"
             name="squadName"
@@ -47,6 +49,7 @@ function SquadModal({ closeModalProps, reloadingPage }: SquadModalProps) {
             onChange={(e) => setSquadName(e.target.value)}
             required
           />
+          </div>
           <button type="submit" disabled={!isFormFilled || loading}>
             {loading ? "Carregando...": "Criar squad"}
           </button>

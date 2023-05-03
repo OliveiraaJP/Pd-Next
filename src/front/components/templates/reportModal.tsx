@@ -38,33 +38,42 @@ function ReportModal({ closeModalProps }: ReportModalProps) {
       <div className={styles.modalChildren}>
         {!errorMessage ? <></> : <ErrorMessage> {errorMessage}</ErrorMessage>}
         <form onSubmit={submitReportForm}>
-          <input
-            type="number"
-            name="userId"
-            id="userId"
-            placeholder="Digite o ID do funcionário"
-            value={employeeId}
-            onChange={(e) => setEmployeeId(Number(e.target.value))}
-            required
-          />
-          <input
-            type="number"
-            name="spentHours"
-            id="spentHours"
-            placeholder="Digite a quantidade de horas"
-            value={spentHours}
-            onChange={(e) => setSpentHours(Number(e.target.value))}
-            required
-          />
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Exemplo de texto de descrição de tarefa executada"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
+          <div className={styles.box}>
+            <label htmlFor="userId">Id do funcionário</label>
+            <input
+              type="number"
+              name="userId"
+              id="userId"
+              placeholder="Digite o ID do funcionário"
+              value={employeeId}
+              onChange={(e) => setEmployeeId(Number(e.target.value))}
+              required
+            />
+          </div>
+          <div className={styles.box}>
+            <label htmlFor="spentHours">Horas trabalhadas</label>
+            <input
+              type="number"
+              name="spentHours"
+              id="spentHours"
+              placeholder="Digite a quantidade de horas"
+              value={spentHours}
+              onChange={(e) => setSpentHours(Number(e.target.value))}
+              required
+            />
+          </div>
+          <div className={styles.box}>
+            <label htmlFor="description">Descrição da tarefa</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="Exemplo de texto de descrição de tarefa executada"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
           <button type="submit" disabled={!isFormFilled || loading}>
             {loading ? "Carregando..." : "Criar lançamento"}
           </button>

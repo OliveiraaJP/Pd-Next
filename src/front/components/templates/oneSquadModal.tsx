@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/SquadDetailsModal.module.css";
 import Button from "../base/button";
 import DatePicker from "react-datepicker";
@@ -6,34 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import br from "date-fns/locale/pt-BR";
 import { format } from "date-fns";
 import { getSquadDetails } from "@/front/requests/squads/getSquadDetails";
+import ISquadDetails from "@/interfaces/models/ISquadDetails";
+import { getSquadEmployees } from "@/front/requests/squads/getSquadEmployees";
 
 interface OneSquadModalProps {
   squadDetails: any;
   closeModalProps: any;
-}
-
-interface DetailsSquadRequest {
-  totalSquadHours: number;
-  averageSquadHoursPerDay: number;
-  members: [
-    {
-      averageWorkHoursPerDay: number;
-      estimatedHours: number;
-      id: number;
-      name: string;
-      reports: [
-        {
-          createdAt: string;
-          description: string;
-          employeeId: number;
-          id: number;
-          spentHours: number;
-        }
-      ];
-      squadId: number;
-      totalWorkHours: number;
-    }
-  ];
 }
 
 function OneSquadModal({ squadDetails }: OneSquadModalProps) {
@@ -41,7 +19,18 @@ function OneSquadModal({ squadDetails }: OneSquadModalProps) {
 
   const [startDate, setStartDate] = useState<any>(newDate);
   const [endDate, setEndDate] = useState<any>(newDate);
-  const [squadData, setSquadDate] = useState<DetailsSquadRequest>();
+  const [squadData, setSquadDate] = useState<ISquadDetails>();
+  const [squadMembers, setSquadMembers] = useState([]);
+
+  const disableButton = squadMembers.length === 0 ? true : false;
+
+  useEffect(() => {
+    getSquadEmployees({ id: squadDetails.id })
+      .then((response) => {
+        setSquadMembers(response.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   async function filterSquadDetails() {
     const startDateReq = format(startDate, "yyyy-MM-dd");
@@ -53,11 +42,18 @@ function OneSquadModal({ squadDetails }: OneSquadModalProps) {
       endDate: endDateReq,
     });
     setSquadDate(request.data);
-    console.log(request.data);
   }
 
   return (
     <>
+      <span>
+        <p className={styles.membersNum}>{squadMembers.length} membro(s)</p>
+        <span className={styles.tooltip}>
+          {squadMembers.map((member: any) => (
+            <p key={member.id + member.name}>• {member.name}</p>
+          ))}
+        </span>
+      </span>
       <div className={styles.dateFilter}>
         <div className={styles.datePicker}>
           <label htmlFor="firstDate">Início</label>
@@ -81,7 +77,7 @@ function OneSquadModal({ squadDetails }: OneSquadModalProps) {
           />
         </div>
         <div className={styles.buttonBox}>
-          <Button small onClick={() => filterSquadDetails()}>
+          <Button small onClick={() => filterSquadDetails()} disabled={disableButton}>
             Filtrar por data
           </Button>
         </div>
@@ -100,7 +96,10 @@ function OneSquadModal({ squadDetails }: OneSquadModalProps) {
               <div className={styles.structureTableContent}>
                 {squadData["members"].map((member, i) =>
                   member["reports"].map((report, index) => (
-                    <div className={styles.tableContent} key={member.name + report.id + report.createdAt}>
+                    <div
+                      className={styles.tableContent}
+                      key={member.name + report.id + report.createdAt}
+                    >
                       <p>{member.name}</p>
                       <p>{report.description}</p>
                       <p>{report.spentHours}</p>
@@ -113,7 +112,7 @@ function OneSquadModal({ squadDetails }: OneSquadModalProps) {
             <div>
               <h3> Horas totais: </h3>
               <p className={`${styles.hours} ${styles.fadein}`}>
-                {squadData.totalSquadHours} Horas{" "}
+                {squadData.totalSquadHours} Horas
               </p>
             </div>
             <div>

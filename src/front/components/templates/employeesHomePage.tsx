@@ -24,8 +24,6 @@ function EmployeesHomePage() {
       });
   }, [reloadPage]);
 
-  console.log(users);
-
   return (
     <>
       {showModal && (

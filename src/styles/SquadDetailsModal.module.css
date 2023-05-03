@@ -115,6 +115,40 @@ div.structureTableContent {
 margin-bottom: 7px;
 }
 
+span p.membersNum {
+  color: var(--gray-3);
+  position: absolute;
+  top: 23px;
+  right: 55px;
+  cursor: pointer;
+}
+
+span span.tooltip p {
+  color: var(--black-1);
+  text-overflow: ellipsis;
+  width: 78px;
+  height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+span span.tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: 45px;
+  right: 53px;
+  width: 88px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--gray-2);
+  font-size: 17px;
+  transition: visibility 0.2s ease-in-out;
+}
+
+span:hover .tooltip {
+  visibility: visible;
+}
+
 .fadein {
   animation-name: fadeIn;
   animation-duration: 2s;

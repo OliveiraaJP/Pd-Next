@@ -10,6 +10,10 @@ export default class SquadRepository {
         return await prisma.squad.findFirst({ where: { id } })
     }
 
+    public async getAllEmployees({ id }: { id: number }) {
+        return await prisma.employee.findMany({ where: { squadId: id } })
+    }
+
     public async getAll() {
         return await prisma.squad.findMany()
     }

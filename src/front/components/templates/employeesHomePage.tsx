@@ -24,8 +24,6 @@ function EmployeesHomePage() {
       });
   }, [reloadPage]);
 
-  console.log(users);
-
   return (
     <>
       {showModal && (
@@ -46,7 +44,7 @@ function EmployeesHomePage() {
           {!loading &&
             users.length !== 0 &&
             users?.map((user, i) => (
-              <div key={i} className={styles.listItems}>
+              <div key={user.id + user.name} className={styles.listItems}>
                 <p>{user.name}</p>
                 <p>{user.estimatedHours}</p>
                 <p>{user.squadId}</p>

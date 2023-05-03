@@ -10,11 +10,15 @@
   color: var(--gray-1);
   cursor: pointer;
   border-radius: 10px;
-  margin-bottom: 15px;
 }
 
 .button:hover {
   background-color: var(--blue-2);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .small{

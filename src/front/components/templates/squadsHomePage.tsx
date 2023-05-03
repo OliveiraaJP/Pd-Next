@@ -7,6 +7,7 @@ import LoadingSpinner from "../base/loadingSpinner";
 import Modal from "../base/modal";
 import SquadModal from "./squadModal";
 import OneSquadModal from "./oneSquadModal";
+import Image from "next/image";
 
 function SquadsHomePage() {
   const [squads, setSquads] = useState<ISquad[]>([]);
@@ -74,6 +75,19 @@ function SquadsHomePage() {
                 </Button>
               </div>
             ))}
+            {!loading && squads.length == 0 && (
+            <div className={styles.emptyBox}>
+              <div className={styles.emptyEmojiBox}>
+              <Image
+                src="/images/sad-emoji.jpeg"
+                alt="sad emoji"
+                width={150}
+                height={150}
+              />
+              </div>
+              <p>Nenhum squad cadastrado. Crie um squad para começar!</p>
+            </div>
+          )}
           {loading && (
             <div className={styles.loading}>
               <LoadingSpinner />

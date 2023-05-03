@@ -6,6 +6,7 @@ import Modal from "../base/modal";
 import IEmployee from "@/interfaces/models/IEmployee";
 import { getAllEmployees } from "@/front/requests/employees/getAllEmployees";
 import EmployeeModal from "./employeeModal";
+import Image from "next/image";
 
 function EmployeesHomePage() {
   const [users, setUsers] = useState<IEmployee[]>([]);
@@ -50,6 +51,19 @@ function EmployeesHomePage() {
                 <p>{user.squadId}</p>
               </div>
             ))}
+          {!loading && users.length == 0 && (
+            <div className={styles.emptyBox}>
+              <div className={styles.emptyEmojiBox}>
+              <Image
+                src="/images/sad-emoji.jpeg"
+                alt="sad emoji"
+                width={150}
+                height={150}
+              />
+              </div>
+              <p>Nenhum usuário cadastrado. Crie um usuário agora vinculando ele a um squad existente!</p>
+            </div>
+          )}
           {loading && (
             <div className={styles.loading}>
               <LoadingSpinner />

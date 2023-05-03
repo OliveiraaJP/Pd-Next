@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Roboto } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import Header from "@/front/components/templates/header";
@@ -7,12 +6,6 @@ import Modal from "@/front/components/base/modal";
 import ReportModal from "@/front/components/templates/reportModal";
 import SquadsHomePage from "@/front/components/templates/squadsHomePage";
 import EmployeesHomePage from "@/front/components/templates/employeesHomePage";
-
-const roboto = Roboto({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
 
 export default function Home() {
   const [selectedTab, setSelectedTab] = useState("squads");
@@ -34,7 +27,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${roboto.className}`}>
+      <main className={`${styles.main}`}>
         {reportModal && (
           <Modal
             onClose={() => setReportModal(false)}

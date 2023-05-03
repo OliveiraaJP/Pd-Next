@@ -72,6 +72,8 @@ $ npm start
 
 - Ao invés de rodar "npm run build" e "npm start" pode optar apenas por rodar "npm run dev" para testar em ambiente de desenvolvimento
 
+- Na pasta raiz do projeto existe um arquivo chamado "Insomnia_http_requests.json", você pode importa-lo para seu Imsomnia para ter requests já montadas no seu aplicativo
+
 - Accesse em seu navegador o link localhost:3000 ou 127.0.0.1:3000
 
 ---
